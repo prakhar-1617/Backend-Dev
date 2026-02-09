@@ -1,73 +1,77 @@
-// const express = require("express");
+const express = require("express");
 
-// const app = express();
+const app = express();
+const PORT = 8000;
 
-// const PORT = 8000;
+/* Middleware to read JSON body */
+app.use(express.json());
 
-// app.get("/", (req, res) => {
-//     res.send("welcome to home page")
-// })
+app.get("/", (req, res) => {
+    res.send("Welcome to home page");
+});
 
-// app.get("/users", (req, res) => {
-//     res.send("<h1>This is user page</h1>");
-// })
+app.get("/users", (req, res) => {
+    res.send("<h1>This is users page</h1>");
+});
 
-// app.get("/users/:id", (req, res) => {
-//     const userID = req.params.id;
-//     res.send(`you are requesting for users: ${userID} `);
-// })
-
-// app.listen(PORT, () => {
-//     console.log(`server is running on port :${PORT}`);
-// })
-const express=require("express");
-
-const app=express();
-
-const PORT =8000;
-app.get("/",(req,res)=>{
-    res.send("Welcome to home page")
-})
-
-app.get("/users",(req,res)=>{
-    res.send("<h1>this is users page</h1> ")
-})
-const students=[
+const students = [
     { id: 1, name: "Alice", branch: "CS" },
-    
     { id: 2, name: "Bob", branch: "EC" },
-    
     { id: 3, name: "Crisi", branch: "EE" },
-    
-    { id: 4, name: "steve", branch: "ME" }
-    
-]
-app.get("/users/:id",(req,res)=>{
-    const userId=req.params.id
-    res.send(`You are requesting for User Id:${userId}`)
-})
+    { id: 4, name: "Steve", branch: "ME" }
+];
+
+/* User by ID */
+app.get("/users/:id", (req, res) => {
+    const userId = req.params.id;
+    res.send(`You are requesting for User Id: ${userId}`);
+});
+
+/* Search students by branch */
 app.get("/students/search", (req, res) => {
     const branch = req.query.branch;
+
     if (!branch) {
         return res.json(students);
     }
-    const foundStudent = students.filter(s => s.branch == branch);
-    res.json(foundStudent);
-})
-app.get("/students",(req,res)=>{
+
+    const foundStudents = students.filter(s => s.branch === branch);
+    res.json(foundStudents);
+});
+
+/* Get all students */
+app.get("/students", (req, res) => {
     res.json(students);
-})
+});
+
+/* Get student by ID */
 app.get("/students/:id", (req, res) => {
-    const id = req.params.id;
-    const arrayIndex = students.findIndex(s => s.id == id);
-    const data = students[arrayIndex];
-    res.json(data);
-})
+    const id = parseInt(req.params.id);
+
+    const student = students.find(s => s.id === id);
+
+    if (!student) {
+        return res.status(404).json({ message: "Student not found" });
+    }
+
+    res.json(student);
+});
+
+/* Register a new student */
 app.post("/students/register", (req, res) => {
     const data = req.body;
+
+    if (!data.id || !data.name || !data.branch) {
+        return res.status(400).json({ message: "Please provide id, name and branch" });
+    }
+
     students.push(data);
-    res.json(students);
-})
-app.listen(PORT,()=>{
-    console.log(`Server is Running on port:${PORT}`)
-})
+    res.json({
+        message: "Student registered successfully",
+        students
+    });
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port: ${PORT}`);
+});
