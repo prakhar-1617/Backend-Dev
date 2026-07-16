@@ -1,0 +1,108 @@
+this is my first command
+
+
+Navigation
+
+pwd - Displays the current working directory path.
+Is-Lists files and directories in the current location.
+Is -1- Shows detailed information like permissions, owner, size, date.
+Is-a-Lists all files including hidden files starting with dot.
+Is-Ih - Shows long listing with human-readable sizes (KB/MB).
+cd - Changes from current directory to specified directory.
+cd Moves one level up to parent directory.
+cd-Switches to user's home directory.
+cd Returns to previously used directory.
+
+File & Directory Operations
+
+mkdir - Creates a new directory.
+mkdir -p - Creates nested directories in a single command.
+rmdir - Deletes an empty directory only.
+touch - Creates an empty file or updates file timestamp.
+cp - Copies file from source to destination.
+cp -r - Recursively copies directories with contents.
+mv Moves or renames a file/directory.
+rm Removes a file.
+rm -rf - Force deletes directory and contents without confirmation.
+
+File Content
+
+cat - Displays entire content of a file.
+less - Views file page by page with scrolling.
+head - Shows first 10 lines of a file.
+tail - Shows last 10 lines of file.
+tail -f - Displays file updates in real time.
+WC Counts lines, words, and characters in file.
+wc -1- Counts only number of lines.
+
+
+Permissions & System
+
+chmod - Changes file access permissions.
+chown - Changes file owner and group.
+whoami - Shows current logged-in username.
+uname -a - Displays complete system information.
+df -h - Shows disk space usage in readable format.
+ps aux Lists all running processes.
+kill - Terminates a process using its PID.
+
+Text Processing
+
+grep - Searches for a pattern inside files.
+sed - Edits and replaces text in stream/file.
+awk - Column-wise text processing tool.
+sort - Arranges file lines in order.
+uniq - Removes adjacent duplicate lines.
+find - Searches files in directories by name/type.
+
+Redirection & Pipes
+
+> - Redirects output to file and overwrites it.
+>> - Appends output to existing file.
+|- Sends output of one command as input to another.
+2>- Redirects error messages to file.
+
+Repository
+
+git init-Initializes a directory as a new Git repository.
+git clone-Copies a remote repository to local machine.
+git status-Shows current state of working/staging area,
+git add-Stages files for next commit.
+git commit-Saves staged changes to repository with message.
+git log-Displays commit history.
+git diff-Shows changes between versions/files.
+git revert-Undoes a commit by creating new opposite commit,
+git reset-Moves HEAD to previous commit, can delete history,
+
+Branching & Merge
+
+git branch-Lists or creates branches.
+git checkout/git switch-Changes active branch,
+git merge Integrates one branch into another.
+git merge abort-Cancels merge during conflicts.
+git mergetool-Opens conflict resolution tool
+git rebase-Reapplies commits on new base rewriting history.
+
+Remote
+
+git remote-v-Lists configured remotes.
+git push-Uploads local commits to remote rеро,
+git pull-Fetches and merges remote changes locally,
+git fetch-Downloads remote changes without merging.
+git branch-r-Shows remote branches.
+git push-delete-Removes branch from remote.
+
+GitHub
+
+Fork-Creates personal copy of another GitHub repository.
+Pull Request-Proposal to merge changes after review.
+Issues-GitHub feature to track bugs/tasks,
+GitHub Actions-Automates CI/CD workflows.
+gitignore-File specifying untracked pattens.
+
+Advanced
+
+git tag-Marks specific commit as release version.
+git stash-Temporarily saves uncommitted work.
+git cherry-pick-Applies selected commit to current branch.
+git submodule-includes external repository inside another.
